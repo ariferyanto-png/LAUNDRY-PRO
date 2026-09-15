@@ -73,7 +73,7 @@ let notaSettings = getSafeData("arsyNotaSettings", {
   paperSize: "58"
 });
 
-let currentTransactionFilter = 'Semua';
+let currentTransactionFilter = 'Antrian';
 let activeTransactionId = null;
 let currentReportType = 'all';
 let activeNewTransactionItems = [];
@@ -1401,8 +1401,7 @@ function filterReportsData() {
     
     if (startDate.value || endDate.value) {
             let targetDate = item.date;
-      if ((item.paymentStatus === "Lunas" || item.paymentStatus === "DP") && item.paymentDate) {
-        targetDate = item.paymentDate;
+            if ((currentReportType === 'omset' || currentReportType === 'lunas' || currentReportType === 'pembayaran') && (item.paymentStatus === "Lunas" || item.paymentStatus === "DP") && item.paymentDate) {
       }
       const d = new Date(targetDate);
 
